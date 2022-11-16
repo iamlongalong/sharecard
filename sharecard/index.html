@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>longtest</title>
+    <script src="./assets/fabric.min.js"></script>
+
+    <style>
+        /* .box {
+            border: 1px solid gray;
+            position: absolute;
+            top: 0;
+        } */
+
+        .button {
+            display: inline-block;
+            zoom: 1;
+            /* zoom and *display = ie7 hack for display:inline-block */
+            *display: inline;
+            vertical-align: baseline;
+            margin: 0 2px;
+            outline: none;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            font: 14px/100% Arial, Helvetica, sans-serif;
+            padding: .5em 2em .55em;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
+            -webkit-border-radius: .5em;
+            -moz-border-radius: .5em;
+            border-radius: .5em;
+            -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+            -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+        }
+
+        .button:hover {
+            text-decoration: none;
+        }
+
+        .button:active {
+            position: relative;
+            top: 1px;
+        }
+
+        /* white */
+        .white {
+            color: #606060;
+            border: solid 1px #b7b7b7;
+            background: #fff;
+            background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ededed));
+            background: -moz-linear-gradient(top, #fff, #ededed);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ededed');
+        }
+
+        .white:hover {
+            background: #ededed;
+            background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#dcdcdc));
+            background: -moz-linear-gradient(top, #fff, #dcdcdc);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#dcdcdc');
+        }
+
+        .white:active {
+            color: #999;
+            background: -webkit-gradient(linear, left top, left bottom, from(#ededed), to(#fff));
+            background: -moz-linear-gradient(top, #ededed, #fff);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#ffffff');
+        }
+
+        .medium {
+            font-size: 18px;
+            padding: .4em 1.5em .42em;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <canvas class="box" width="760" height="1050" id="longpic"></canvas>
+    </div>
+    <br>
+    <div style="display: inline;">
+        <button class="button white medium" id="changeColor">改背景色</button>
+        <button class="button white medium" id="changePicture">改背景图</button>
+        <button class="button white medium" id="copytoClipBoard">复制到剪贴板</button>
+        <button class="button white medium" id="downloadBtn">点击下载</button>
+
+        <button class="button white medium" id="closeBtn">关闭</button>
+    </div>
+
+
+    <script type="module" src="./index.js"></script>
+    <script>
+        window.msgToken = "__long_share_card_token"
+        let heartBeat = 5 * 1000
+        window.pingLock = false
+
+        window.onload = function () {
+            window.parent.postMessage({
+                token: window.msgToken,
+                type: "ping",
+                data: {}
+            }, '*')
+
+            let interval = setInterval(function () {
+                if (window.pingLock) {
+                    clearInterval(interval)
+                    return
+                }
+
+                window.parent.postMessage({
+                    token: window.msgToken,
+                    type: "ping",
+                    data: {}
+                }, '*')
+            }, heartBeat)
+
+
+        }
+    </script>
+</body>
+
+</html>

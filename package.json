@@ -1,0 +1,16 @@
+{
+  "name": "sharecard",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "deploy:qiniu": "qshell qupload quploadconfig.json",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fabric": "^5.2.4",
+    "unsplash-js": "^7.0.15"
+  }
+}

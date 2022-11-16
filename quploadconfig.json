@@ -1,0 +1,21 @@
+{
+    "src_dir"            :   "sharecard/",
+    "bucket"             :   "longstatic",
+    "key_prefix"         :   "sharecard/v1/",
+    "ignore_dir"         :   false,
+    "overwrite"          :   true,
+    "check_exists"       :   true,
+    "check_hash"         :   true,
+    "check_size"         :   false,
+    "rescan_local"       :   true,
+    "skip_file_prefixes" :   "test,demo,",
+    "skip_path_prefixes" :   "temp/",
+    "skip_fixed_strings" :   ".svn,.git,.vscode",
+    "skip_suffixes"      :   ".DS_Store",
+    "log_rotate"         :   1,
+    "log_stdout"         :   false,
+    "file_type"          :   0,
+    "resumable_api_v2"   :   false,
+    "resumable_api_v2_part_size" : 4194304
+ }
+ 
